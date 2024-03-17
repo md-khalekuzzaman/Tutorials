@@ -9,57 +9,26 @@
 #### Pseudocode:
 
 ```c++
+```python
+function quick_sort(arr, low, high):
+    if low < high:
+        # Partition the array
+        pivot_index = partition(arr, low, high)
+        
+        # Recursively sort the sub-arrays
+        quick_sort(arr, low, pivot_index - 1)
+        quick_sort(arr, pivot_index + 1, high)
 
-#include <bits/stdc++.h>
+function partition(arr, low, high):
+    pivot = arr[high]   # Choose pivot (usually last element)
+    i = low - 1         # Index of smaller element
 
-using namespace std;
-class Solution
-{
-private:
-    int testCases, n;
+    for j = low to high - 1:
+        if arr[j] <= pivot:
+            i += 1
+            swap(arr[i], arr[j])
 
-public:
-    Solution()
-    {
-        cin >> testCases;
-    }
-
-    void solveAll()
-    {
-        while (testCases--)
-        {
-            takeInput();
-            ans();
-        }
-    }
-
-private:
-    void takeInput()
-    {
-        cin >> n;
-    }
-    void ans()
-    {
-        if (n % 2 != 0)
-        {
-            cout << "NO" << endl;
-            return;
-        }
-        cout << "YES" << endl;
-        for (int i = 1; i <= n / 2; i++)
-        {
-            cout << ((i % 2 == 0) ? "BB" : "AA");
-        }
-        cout << endl;
-    }
-};
-
-int main()
-{
-    Solution solution = Solution();
-    solution.solveAll();
-    return 0;
-}
-
+    swap(arr[i + 1], arr[high])
+    return i + 1
 
 ```
